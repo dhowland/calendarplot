@@ -2,7 +2,8 @@
 Plot daily data on a 1-year calendar using Python and Pandas
 
 This project is an adaptation of code posted by @SO_tourist on StackOverflow,
-here: https://stackoverflow.com/a/61277350
+here:  
+https://stackoverflow.com/a/61277350
 
 It has not been developed into a full-fledged library at this stage.  I simply
 collected it into a form that I find useful and am saving it here for posterity.
@@ -76,7 +77,9 @@ The plotting function supports the following options:
 - `cmap`  
   the matplotlib colormap to use
 - `hlmap`  
-  a dictionary of annotation values.  Will include a legend with the plot
+  the highlight map, which is a dictionary of annotation values.  The dict must
+  map a data value key to a tuple of `('color', 'Name')` where `'color'` is a
+  matplotlib color and `'Name'` is a string that will be used on the legend
 - `showcb`  
   a flag to create a color bar.  `True` to draw a color bar legend
 - `portrait`  
