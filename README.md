@@ -28,9 +28,9 @@ must be numbers and they must be unique to each date.
 
 ## Usage
 
-If you have data in the following CSV format:  
+If you have the following data in CSV format:  
 
-Data       | Value
+Date       | Value
 ---------- | -----
 1/1/2022   | 1
 1/5/2022   | 1
