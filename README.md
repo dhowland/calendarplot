@@ -1,5 +1,5 @@
 # calendarplot
-Plot daily data on a 1-year calendar using Python and Pandas
+Plot daily data on a 1-year calendar using Python and Matplotlib
 
 This project is an adaptation of code posted by @SO_tourist on StackOverflow,
 here:  
