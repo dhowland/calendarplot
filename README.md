@@ -111,7 +111,7 @@ while d.year == 2022:
 df = pd.DataFrame(data={'Date': datelist, 'Value': valuelist})
 df.set_index('Date', inplace=True)
 
-create_year_calendar(df['Value'], 2022, '2022 Heatmap', 'example.png', cmap='Greens', showcb=True)
+create_year_calendar(df['Value'], 2022, '2022 Heatmap', 'example2.png', cmap='Greens', showcb=True)
 ```
 
 ![example plot](example2.png)
