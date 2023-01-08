@@ -72,19 +72,26 @@ Date       | Value
 
 A calendar plot is generated as follows:
 
-```
+```python
 import pandas as pd
 
 from calendarplot import create_year_calendar
 
+# load the CSV into a DataFrame
 df = pd.read_csv('data.csv')
+# convert the date strings to timestamps
 df['Date'] = pd.to_datetime(df.Date)
+# set the index to the Date column
 df.set_index('Date', inplace=True)
 
+# create the highlight map for all possible values, as we intend to cover the
+# entire calendar.  Days with no data will get a value of 0 and by using None
+# as the description, it won't show up in the legend
 hlmap = {0: ('gainsboro', None),
          1: ('lightblue', 'Near Miss'),
          2: ('tomato', 'Hit')}
 
+# create the calendar using the Value column
 create_year_calendar(df['Value'], 2022, '2022 Safety Report', 'example.png', hlmap=hlmap)
 ```
 
@@ -92,25 +99,30 @@ create_year_calendar(df['Value'], 2022, '2022 Safety Report', 'example.png', hlm
 
 The following is an example of a heatmap calendar plot:
 
-```
+```python
 import random
 import datetime
 import pandas as pd
 
 from calendarplot import create_year_calendar
 
+# create random data for every day of the year
 datelist = []
 valuelist = []
 d = datetime.date(2022, 1, 1)
 while d.year == 2022:
+    # Gaussian distribution for a nicer appearance
     v = random.gauss(50, 20)
+    # date indexes must be Pandas timestamps
     datelist.append(pd.Timestamp(d))
     valuelist.append(v)
     d += datetime.timedelta(days=1)
 
+# create the DataFrame and set the index to the Date column
 df = pd.DataFrame(data={'Date': datelist, 'Value': valuelist})
 df.set_index('Date', inplace=True)
 
+# create the calendar using the Value column
 create_year_calendar(df['Value'], 2022, '2022 Heatmap', 'example2.png', cmap='Greens', showcb=True)
 ```
 
