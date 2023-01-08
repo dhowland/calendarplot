@@ -35,8 +35,8 @@ The module provides one function for plotting the calendar:
 
 - `df` (required)  
   the Pandas DataFrame column with the data to plot.  It must be indexed by a
-  date timestamp.  The values must be numbers and they must be unique to each
-  date.  Dates with no data will be given a value of 0
+  date timestamp.  The values must be numbers.  Dates with no data will be
+  given a value of 0
 - `year` (required)  
   the calendar year to plot
 - `title`  
