@@ -36,7 +36,7 @@ The module provides one function for plotting the calendar:
 - `df` (required)  
   the Pandas DataFrame column with the data to plot.  It must be indexed by a
   date timestamp.  The values must be numbers and they must be unique to each
-  date.
+  date.  Dates with no data will be given a value of 0
 - `year` (required)  
   the calendar year to plot
 - `title`  
@@ -48,7 +48,8 @@ The module provides one function for plotting the calendar:
 - `hlmap`  
   the highlight map, which is a dictionary of annotation values.  The dict must
   map a data value key to a tuple of `('color', 'Name')` where `'color'` is a
-  matplotlib color and `'Name'` is a string that will be used on the legend
+  matplotlib color and `'Name'` is a string that will be used on the legend.
+  Use None as the name to exclude a color from the legend
 - `showcb`  
   a flag to create a color bar.  `True` to draw a color bar legend
 - `portrait`  
