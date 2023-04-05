@@ -67,6 +67,8 @@ def create_year_calendar(df, year, title=None, filename=None, cmap='cool', hlmap
     gridcolor = 'white'
     fontcolor = 'black'
 
+    label_map = {}
+
     for i, axs in enumerate(ax.flat):
 
         axs.imshow(day_vals[i+1], cmap=cmap, vmin=vmin, vmax=vmax)  # heatmap
@@ -90,7 +92,6 @@ def create_year_calendar(df, year, title=None, filename=None, cmap='cool', hlmap
         for edge in ['left', 'right', 'bottom', 'top']:
             axs.spines[edge].set_color(gridcolor)
 
-        label_map = {}
         # Annotate
         for w in range(WEEKS_IN_MONTH):
             for d in range(DAYS_IN_WEEK):
@@ -118,13 +119,14 @@ def create_year_calendar(df, year, title=None, filename=None, cmap='cool', hlmap
     fig.suptitle(title, fontsize=16)
     showlegend = len(label_map) > 0
     if showlegend:
-        handles = [h for h,l in label_map.values()]
-        labels = [l for h,l in label_map.values()]
+        mapvals = sorted(label_map)
+        handles = [label_map[v][0] for v in mapvals]
+        labels = [label_map[v][1] for v in mapvals]
         if showcb:
             loc = (0.04, 0.01)
         else:
             loc = 'lower center'
-        fig.legend(handles, labels, loc=loc, fontsize=10, ncol=3)
+        fig.legend(handles, labels, loc=loc, fontsize=10, ncol=len(mapvals))
     if showcb:
         norm = Normalize(vmin=vmin, vmax=vmax)
         mappable = ScalarMappable(norm=norm, cmap=cmap)
